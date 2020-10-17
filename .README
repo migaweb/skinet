@@ -1,0 +1,48 @@
+**Dependencies SDK 3.1.402 Core 3.1.8**
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.SQLite
+Microsoft.EntityFrameworkCore.Design
+
+**Install .NET EF Tool 'dotnet-ef' (version '3.1.8')**
+´´´
+dotnet tool install --global dotnet-ef --version 3.1.8
+´´´
+**Generate migration**
+´´´
+dotnet ef migrations add InitialCreate -o Data/Migrations
+´´´
+**Create/Update database**
+´´´
+dotnet ef database update
+´´´
+
+**Create project and add to solution**
+´´´
+dotnet new classlib -o Core
+dotnet sln add Core\
+´´´
+
+**Add dependencies**
+´´´
+dotnet add reference ..\Core\
+´´´
+
+**Restore to register references**
+´´´
+dotnet add reference ..\Core\
+´´´
+
+
+**Source**
+https://github.com/TryCatchLearn/Skinet
+
+**Dev server watch**
+´´´
+dotnet watch run
+´´´
+
+**Dev certs**
+´´´
+dotnet dev-certs https
+dotnet dev-certs https -t
+´´´
