@@ -2,6 +2,7 @@
 Microsoft.EntityFrameworkCore
 Microsoft.EntityFrameworkCore.SQLite
 Microsoft.EntityFrameworkCore.Design
+AutoMapper.Extensions.Microsoft.DependencyInjection
 
 **Install .NET EF Tool 'dotnet-ef' (version '3.1.8')**
 ´´´
