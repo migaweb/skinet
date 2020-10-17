@@ -9,12 +9,21 @@ dotnet tool install --global dotnet-ef --version 3.1.8
 ´´´
 **Generate migration**
 ´´´
-dotnet ef migrations add InitialCreate -o Data/Migrations
+dotnet ef migrations add InitialCreate -p .\Infrastructure\ -s .\API\ -o .\Data\Migrations\
 ´´´
 **Create/Update database**
 ´´´
 dotnet ef database update
 ´´´
+**Drop database**
+´´´
+dotnet ef database drop -p Infrastructure -s API
+´´´
+**Remove migrations**
+´´´
+dotnet ef migrations remove -p Infrastructure -s API
+´´´
+
 
 **Create project and add to solution**
 ´´´
