@@ -4,7 +4,7 @@
 
     <section class="col-3">
       <h5 class="text-warning ml-3">Sort</h5>
-      <select class="custom-select mb-3" (change)="onSortSelected($event.target.value)">
+      <select style="cursor:pointer" class="custom-select mb-3" (change)="onSortSelected($event.target.value)">
         <option *ngFor="let sort of sortOptions"
                 [value]="sort.value"
         >
@@ -14,7 +14,7 @@
       
       <h5 class="text-warning ml-3">Brands</h5>
       <ul class="list-group my-3">
-        <li class="list-group-item" 
+        <li class="list-group-item" style="cursor:pointer"
             *ngFor="let brand of brands"
             [class.active]="brand.id === this.shopParams.brandId"
             [value]="brand.id"
@@ -25,7 +25,7 @@
       </ul>
       <h5 class="text-warning ml-3">Types</h5>
       <ul class="list-group my-3">
-        <li class="list-group-item" 
+        <li class="list-group-item" style="cursor:pointer" 
             *ngFor="let type of types"
             [class.active]="type.id === this.shopParams.typeId"
             [value]="type.id"
@@ -38,20 +38,17 @@
     
     <section class="col-9">
       <div class="d-flex justify-content-between align-items-center pb-2">
-        <header>
-          <span>Showing 
-            <strong>
-              {{(this.shopParams.pageNumber - 1) * this.shopParams.pageSize + 1}}
-              - {{this.shopParams.pageNumber * this.shopParams.pageSize}}
-            </strong> 
-            of 
-            <strong>{{this.totalCount}}</strong> 
-            results</span>
-        </header>
+
+        <app-paging-header
+          [totalCount]="totalCount"
+          [pageSize]="this.shopParams.pageSize"
+          [pageNumber]="this.shopParams.pageNumber"
+        ></app-paging-header>
+
         <div class="form-inline mt2">
-          <input class="form-control mr-2" style="width:300px;" placeholder="Search" type="text">
-          <button class="btn btn-outline-primary my-2">Search</button>
-          <button class="btn btn-outline-success ml-2 my-2">Reset</button>
+          <input (keyup.enter)="onSearch()" class="form-control mr-2" #search style="width:300px;" placeholder="Search" type="text">
+          <button (click)="onSearch()" class="btn btn-outline-primary my-2">Search</button>
+          <button (click)="onReset()" class="btn btn-outline-success ml-2 my-2">Reset</button>
         </div>
       </div>
       <div class="row">
@@ -59,18 +56,12 @@
           <app-product-item [product]="item"></app-product-item>
         </div>
       </div>
-      <div class="d-flex justify-content-center">
-        <pagination 
-              [boundaryLinks]="true" 
-              [totalItems]="this.totalCount"
-              (pageChanged)="this.onPageChanged($event)"
-              [itemsPerPage]="this.shopParams.pageSize"
-              previousText="&lsaquo;" 
-              nextText="&rsaquo;" 
-              firstText="&laquo;" 
-              lastText="&raquo;"
-              >
-        </pagination>
+      <div class="d-flex justify-content-center" *ngIf="totalCount && totalCount > 0">
+        <app-pager
+          [totalCount]="totalCount"
+          [pageSize]="shopParams.pageSize"
+          (pageChanged)="onPageChanged($event)"
+        ></app-pager>
     </div>
     </section>
   </div>
