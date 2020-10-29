@@ -1,8 +1,19 @@
+**Redis start**
+´´´
+redis-server
+´´´
+**Redis stop**
+´´´
+redis-cli
+shutdown
+´´´
+
 **Dependencies SDK 3.1.402 Core 3.1.8**
 Microsoft.EntityFrameworkCore
 Microsoft.EntityFrameworkCore.SQLite
 Microsoft.EntityFrameworkCore.Design
 AutoMapper.Extensions.Microsoft.DependencyInjection
+StackExhange.Redis
 
 **Install .NET EF Tool 'dotnet-ef' (version '3.1.8')**
 ´´´
@@ -24,7 +35,6 @@ dotnet ef database drop -p Infrastructure -s API
 ´´´
 dotnet ef migrations remove -p Infrastructure -s API
 ´´´
-
 
 **Create project and add to solution**
 ´´´
