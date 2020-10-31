@@ -23,6 +23,12 @@ dotnet tool install --global dotnet-ef --version 3.1.8
 ´´´
 dotnet ef migrations add InitialCreate -p .\Infrastructure\ -s .\API\ -o .\Data\Migrations\
 ´´´
+**Generate Identity migration**
+´´´
+dotnet ef migrations add IdentityInitial -p Infrastructure -s API -o Identity/Migrations -c AppIdentityDbContext
+dotnet ef migrations remove -p Infrastructure -s API -c AppIdentityDbContext
+´´´
+
 **Create/Update database**
 ´´´
 dotnet ef database update
