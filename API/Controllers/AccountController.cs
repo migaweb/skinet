@@ -39,6 +39,7 @@ namespace API.Controllers
     [HttpGet]
     public async Task<ActionResult<UserDto>> GetCurrentUser()
     {
+      Console.WriteLine("GET CURRENT USER!!!!!!!!!!!!!!!!!!!!!");
       var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
 
       return new UserDto()
