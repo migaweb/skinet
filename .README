@@ -1,3 +1,8 @@
+**Powershell prod or dev mode**
+´´´
+$Env:ASPNETCORE_ENVIRONMENT = "Production|Development"
+´´´
+
 **Redis start**
 ´´´
 redis-server
